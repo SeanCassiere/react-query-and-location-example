@@ -22,7 +22,7 @@ const Post = () => {
 		data: commentData,
 		error: commentError,
 		isFetching: isCommentFetching,
-	} = useQuery<SingleComment[], any>(["comments", postId], () => fetchCommentsByPostId(postId));
+	} = useQuery<SingleComment[], any>(["posts", postId, "comments"], () => fetchCommentsByPostId(postId));
 
 	return (
 		<div>
