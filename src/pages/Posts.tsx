@@ -1,12 +1,12 @@
 import React from "react";
 import { Link, MatchRoute, Outlet, useLoadRoute } from "@tanstack/react-location";
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 
 import { fetchPosts } from "../api";
 import { SinglePost } from "../types";
 
-const Posts = () => {
-	const { status, data, error } = useQuery<SinglePost[], any>("posts", fetchPosts);
+const Posts: React.FC = () => {
+	const { status, data, error } = useQuery<SinglePost[], any>(["posts"], fetchPosts);
 
 	const loadRoute = useLoadRoute();
 	return (

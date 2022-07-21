@@ -1,6 +1,6 @@
 import React from "react";
 import { useMatch } from "@tanstack/react-location";
-import { useQuery } from "react-query";
+import { useQuery } from "@tanstack/react-query";
 
 import { fetchCommentsByPostId, fetchPostById } from "../api";
 import { SingleComment, SinglePost } from "../types";

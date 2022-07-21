@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, MakeGenerics, Outlet, ReactLocation, Router } from "@tanstack/react-location";
-import { QueryClient, QueryClientProvider } from "react-query";
-import { ReactQueryDevtools } from "react-query/devtools";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 
 import { fetchPostById, fetchPosts } from "./api";
 
@@ -15,7 +15,7 @@ type LocationGenerics = MakeGenerics<{
 const location = new ReactLocation<LocationGenerics>();
 const queryClient = new QueryClient();
 
-const App = () => {
+const App: React.FC = () => {
 	return (
 		<QueryClientProvider client={queryClient}>
 			<Router
@@ -29,7 +29,7 @@ const App = () => {
 						path: "posts",
 						element: <Posts />,
 						loader: () =>
-							queryClient.getQueryData("posts") ?? queryClient.fetchQuery("posts", fetchPosts).then(() => ({})),
+							queryClient.getQueryData(["posts"]) ?? queryClient.fetchQuery(["posts"], fetchPosts).then(() => ({})),
 						children: [
 							{
 								path: "/",
